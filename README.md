@@ -4,8 +4,9 @@ It's an angular app where you can find music from spotify.
 
 ## Preview
 
-![Spoty App](https://i.imgur.com/GyL0oTZ.gif)
+![](https://i.imgur.com/GyL0oTZ.gif)
 
+You can find a live demo [here](https://quizzical-tesla-9731e8.netlify.app/)
 ## Setup
 
 First you need to install the required dependencies with `npm install`.
