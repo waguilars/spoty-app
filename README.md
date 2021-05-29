@@ -4,7 +4,7 @@ It's an angular app where you can find music from spotify.
 
 ## Preview
 
-![](https://i.imgur.com/GyL0oTZ.gif)
+![spoty-app](https://user-images.githubusercontent.com/52500170/120085614-5eef3480-c09f-11eb-815e-8f85bb7b228c.gif)
 
 You can find a live demo [here](https://quizzical-tesla-9731e8.netlify.app/)
 ## Setup
