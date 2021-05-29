@@ -4,7 +4,7 @@ It's an angular app where you can find music from spotify.
 
 ## Preview
 
-
+![Spoty App](https://i.imgur.com/GyL0oTZ.gif)
 
 ## Setup
 
