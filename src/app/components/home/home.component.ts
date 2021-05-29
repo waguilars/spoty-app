@@ -17,16 +17,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spotify.getNewReleases().subscribe(
-      (data) => {
-        this.newSongs = data;
-        this.loading = false;
-      },
-      (serviceError) => {
-        this.loading = false;
-        this.error = true;
-        this.errorMessage = serviceError.error.error.message;
-      }
-    );
+    setTimeout(() => {
+      this.spotify.getNewReleases().subscribe(
+        (data) => {
+          this.newSongs = data;
+          this.loading = false;
+        },
+        (serviceError) => {
+          this.loading = false;
+          this.error = true;
+          this.errorMessage = serviceError.error.error.message;
+        }
+      );
+    }, 200);
   }
 }
