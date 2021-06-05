@@ -5,8 +5,8 @@ import axios from 'axios';
 const handler: Handler = async (event, context) => {
   const url = `https://accounts.spotify.com/api/token`;
 
-  const client_id = process.env['client-id'] || 'CLIENT-ID';
-  const client_secret = process.env['secret'] || 'CLIENT-SECRET';
+  const client_id = process.env['CLIENT_ID'] || 'CLIENT-ID';
+  const client_secret = process.env['CLIENT_SECRET'] || 'CLIENT-SECRET';
   const data = { grant_type: 'client_credentials' }
 
   try {
