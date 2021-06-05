@@ -1,36 +1,25 @@
-import { SpotifyAuth } from './../interfaces/spotify.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class SpotifyService {
   token: string;
-  validToken: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   getAuth() {
-    const url = `https://accounts.spotify.com/api/token`;
-    const { credentials } = environment;
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/x-www-form-urlencoded')
-
-    const payload = new HttpParams()
-      .append('grant_type', credentials.grant_type)
-      .append('client_id', credentials.client_id)
-      .append('client_secret', credentials.client_secret);
-
-    return this.http
-      .post(url, payload, { headers })
-      .pipe(tap((resp: SpotifyAuth) => {
-        this.token = resp.access_token
-        this.validToken = true
-      }));
+    const url = environment.url;
+    return this.http.get(url).pipe(
+      tap((res: any) => {
+        this.token = res.data.access_token
+      })
+    );
   }
 
   private getQuery(query: string, params?: HttpParams) {
@@ -42,7 +31,7 @@ export class SpotifyService {
 
     return !params
       ? this.http.get(url, { headers })
-      : this.http.get(url, { headers, params })
+      : this.http.get(url, { headers, params });
   }
 
   getNewReleases(): Observable<any> {
@@ -72,5 +61,4 @@ export class SpotifyService {
       map((data: any) => data.tracks)
     );
   }
-
 }

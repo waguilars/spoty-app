@@ -29,6 +29,6 @@ export class HomeComponent implements OnInit {
           this.errorMessage = serviceError.error.error.message;
         }
       );
-    }, 200);
+    }, 1000);
   }
 }
