@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { mergeMap } from 'rxjs/operators';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
@@ -17,8 +18,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.spotify.getNewReleases().subscribe(
+    this.spotify
+      .getAuth()
+      .pipe(mergeMap(() => this.spotify.getNewReleases()))
+      .subscribe(
         (data) => {
           this.newSongs = data;
           this.loading = false;
@@ -26,9 +29,8 @@ export class HomeComponent implements OnInit {
         (serviceError) => {
           this.loading = false;
           this.error = true;
-          this.errorMessage = serviceError.error.error.message;
+          this.errorMessage = serviceError.error?.msg|| serviceError.error?.error.message;
         }
       );
-    }, 1000);
   }
 }

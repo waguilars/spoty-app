@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
+import { Observable } from 'rxjs';
+import { delay, map, tap } from 'rxjs/operators';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class SpotifyService {
     const url = environment.url;
     return this.http.get(url).pipe(
       tap((res: any) => {
-        this.token = res.data.access_token
+        this.token = res.data.access_token;
       })
     );
   }

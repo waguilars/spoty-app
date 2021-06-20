@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:46777/spotify'
+  url: 'http://localhost:8885/spotify'
 };
 
 /*
